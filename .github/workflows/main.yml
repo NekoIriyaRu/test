@@ -17,14 +17,8 @@ jobs:
     - name: Build solution
       run: msbuild AdvHDTools.sln /p:Configuration=Release /p:Platform=x86
 
-    - name: Create Release
-      uses: actions/create-release@v1
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v2
       with:
-        tag_name: v1.0.0  # Замените на желаемое имя тега
-        release_name: Release v1.0.0
-        body: |
-          Описание релиза
-        draft: false
-        prerelease: false
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        name: AdvHDTools
+        path:  AdvHDTools\bin\Release\x86\  # Укажите путь к собранным файлам
