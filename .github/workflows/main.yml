@@ -21,6 +21,7 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         files: |
-          <путь_к_папке_с_собранными_файлами>/*
+          ${{ github.workspace }}/bin/Release/*  # Путь к папке с собранными файлами
+        tag_name: ${{ github.run_number }} 
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
