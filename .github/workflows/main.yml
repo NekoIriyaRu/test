@@ -21,7 +21,10 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         files: |
-          ${{ github.workspace }}/bin/Release/*  # Путь к папке с собранными файлами
+          Source/ARCV1Editor/Release/*
+          Source/ARCV2Editor/Release/*
+          Source/WIPEditor/Release/*
+          Source/WS2DecEnc/Release/*
         tag_name: ${{ github.run_number }} 
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
