@@ -1,0 +1,26 @@
+name: Build and Release AdvHDTools
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Add MSBuild to PATH
+      uses: microsoft/setup-msbuild@v1.0.2
+
+    - name: Build solution
+      run: msbuild AdvHDTools.sln /p:Configuration=Release /p:Platform=x86
+
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          <путь_к_папке_с_собранными_файлами>/*
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
