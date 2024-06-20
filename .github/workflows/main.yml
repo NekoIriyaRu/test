@@ -18,13 +18,13 @@ jobs:
       run: msbuild AdvHDTools.sln /p:Configuration=Release /p:Platform=x86
 
     - name: Create Release
-      uses: softprops/action-gh-release@v1
+      uses: actions/create-release@v1
       with:
-        files: |
-          Source/ARCV1Editor/Release/*
-          Source/ARCV2Editor/Release/*
-          Source/WIPEditor/Release/*
-          Source/WS2DecEnc/Release/*
-        tag_name: ${{ github.run_number }} 
+        tag_name: v1.0.0  # Замените на желаемое имя тега
+        release_name: Release v1.0.0
+        body: |
+          Описание релиза
+        draft: false
+        prerelease: false
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
